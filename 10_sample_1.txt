@@ -1,0 +1,29 @@
+[
+    {
+        "id": "1",
+        "title": "Step 1",
+        "description": "Step 1 desc",
+        "display": "on",
+        "status": "",
+        "optional": true,
+        "timestamp": ""
+    },
+    {
+        "id": "2",
+        "title": "Step 2",
+        "description": "Step 2 desc",
+        "display": "on",
+        "status": "",
+        "optional": true,
+        "timestamp": ""
+    },
+    {
+        "id": "3",
+        "title": "Review",
+        "description": "Review desc",
+        "display": "on",
+        "status": "",
+        "optional": true,
+        "timestamp": ""
+    }
+]

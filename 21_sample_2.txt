@@ -1,0 +1,121 @@
+/**
+ * Copyright (c)2020, 2021, Oracle and/or its affiliates.
+ * Licensed under The Universal Permissive License (UPL), Version 1.0
+ * as shown at https://oss.oracle.com/licenses/upl/
+ */
+
+define(['knockout', 'ojs/ojkeyset', 'papa'], function (ko, keySet, Papa) {
+  "use strict";
+
+  var PageModule = function PageModule() {
+    this.selectedItems = ko.observable({
+      row: new keySet.KeySetImpl(),
+      column: new keySet.KeySetImpl()
+    });
+  };
+
+  PageModule.prototype.processFilePapa = function (fileSet) {
+
+    return new Promise(function(resolve, reject) {
+        Papa.parse(fileSet, {
+            complete: function(results) {
+                console.log(results.data);
+                resolve(results.data);
+            },
+            header: true
+        });
+    });
+
+  };
+
+  PageModule.prototype.processFile = function (fileSet) {
+
+    //var reader = new FileReader();
+
+    return new Promise(function (resolve, reject) {
+      let fileReader = new FileReader();
+      fileReader.readAsBinaryString(fileSet);
+      fileReader.onload = (event) => {
+        let data = event.target.result;
+        let workbook = XLSX.read(data, { type: "binary", cellText:false, cellDates:true });
+        workbook.SheetNames.forEach(sheet => {
+          if (sheet === 'Sheet1') {
+            //let rowObject = XLSX.utils.sheet_to_json(workbook.Sheets[sheet]);
+            let rowObject = XLSX.utils.sheet_to_json(workbook.Sheets[sheet],{header:0,raw:false,dateNF:'yyyy/mm/dd'});
+            //let rowObject = XLSX.utils.sheet_to_json(workbook.Sheets[sheet],{header:0,raw:false,dateNF:'yyyy-mm-dd'});
+            console.log(rowObject);
+            resolve(rowObject);
+          }
+        });
+      };
+    });
+
+  };
+
+  PageModule.prototype.createColumnsArray = function (jsonArr) {
+    var x = [];
+
+    for (var key of Object.keys(jsonArr[0])) {
+      // aqui se puede meter condicional para la fecha
+      console.log("HI:"+key);
+      x.push({ "headerText": key, "field": key });     
+    }
+    return x;
+  };
+
+
+  PageModule.prototype.stringToArray = function (x_string) {
+    return x_string.split(",");
+  };
+
+  PageModule.prototype.reload = function (force) {
+    window.location.reload(force);
+  };
+
+  PageModule.prototype.getBatchId = function () {
+
+    var today = new Date();
+    
+    var mo = (today.getMonth()+1);
+    if (mo < 10) {
+      mo = '0' + mo;
+    }
+
+    var da = today.getDate() ;
+    if (da < 10) {
+      da = '0' + da;
+    }    
+ 
+    var hh = today.getHours() ;
+    if (hh < 10) {
+      hh = '0' + hh;
+    } 
+
+    var mi = today.getMinutes() ;
+    if (mi < 10) {
+      mi = '0' + mi;
+    }
+
+    var ss = today.getSeconds() ;
+    if (ss < 10) {
+      ss = '0' + ss;
+    }    
+
+    var date = today.getFullYear()+'_'+mo+'_'+da;
+    var time = hh+'_'+mi+'_'+ss;
+
+    console.log(date+time); 
+
+    return (date+'_'+time);
+
+  };
+
+
+  PageModule.prototype.log = function (arg1, arg2) {
+    console.log("XXXXXX:", arg1);
+  };
+
+
+  return PageModule;
+
+});

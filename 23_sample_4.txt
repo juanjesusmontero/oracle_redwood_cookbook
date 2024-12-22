@@ -1,0 +1,60 @@
+<h5 class="oj-header">Supplier Data</h5>
+        <hr class="oj-hr">
+        <hr class="oj-hr">
+        <oj-input-text value="{{ $variables.postSuppliers.Supplier }}" label-hint="Supplier"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.SupplierNumber }}" label-hint="SupplierNumber">
+        </oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.SupplierTypeCode }}" label-hint="SupplierTypeCode">
+        </oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.TaxOrganizationTypeCode }}"
+          label-hint="TaxOrganizationTypeCode"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.TaxRegistrationCountryCode }}"
+          label-hint="TaxRegistrationCountryCode"></oj-input-text>
+        <hr class="oj-hr">
+        <h5 class="oj-header" style="background-color: lightblue;">Address Data</h5>
+        <hr class="oj-hr">
+        <hr class="oj-hr">
+        <oj-input-text value="{{ $variables.postSuppliers.addresses.items[0].AddressLine1 }}" label-hint="AddressLine1"
+          style="background-color: lightblue;">
+        </oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.addresses.items[0].AddressLine2 }}" label-hint="AddressLine2"
+          style="background-color: lightblue;">
+        </oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.addresses.items[0].AddressName }}" label-hint="AddressName"
+          style="background-color: lightblue;">
+        </oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.addresses.items[0].City }}" label-hint="City"
+          style="background-color: lightblue;"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.addresses.items[0].CountryCode }}" label-hint="CountryCode"
+          style="background-color: lightblue;">
+        </oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.addresses.items[0].PostalCode }}" label-hint="PostalCode"
+          style="background-color: lightblue;">
+        </oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.addresses.items[0].State }}" label-hint="State"
+          style="background-color: lightblue;">
+        </oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.addresses.items[0].AddressPurposeOrderingFlag }}"
+          label-hint="AddressPurposeOrderingFlag" style="background-color: lightblue;"></oj-input-text>
+        <!--   sites-->
+        <hr class="oj-hr">
+        <h5 class="oj-header" style="background-color: lightgreen;">Site Data</h5>
+        <hr class="oj-hr">
+        <hr class="oj-hr">
+        <oj-input-text value="{{ $variables.postSuppliers.sites.items[0].SupplierSite }}" 
+          label-hint="SupplierSite"
+          style="background-color: lightgreen;"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.sites.items[0].ProcurementBU }}" 
+          label-hint="ProcurementBU"
+          style="background-color: lightgreen;"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.sites.items[0].SupplierAddressName }}"
+          label-hint="SupplierAddressName" style="background-color: lightgreen;"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.sites.items[0].SitePurposeSourcingOnlyFlag }}"
+          label-hint="SitePurposeSourcingOnlyFlag" style="background-color: lightgreen;"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.sites.items[0].SitePurposePurchasingFlag }}"
+          label-hint="SitePurposePurchasingFlag" style="background-color: lightgreen;"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.sites.items[0].SitePurposeProcurementCardFlag }}"          label-hint="SitePurposeProcurementCardFlag" style="background-color: lightgreen;"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.sites.items[0].SitePurposePrimaryPayFlag }}"
+          label-hint="SitePurposePrimaryPayFlag" style="background-color: lightgreen;"></oj-input-text>
+        <oj-input-text value="{{ $variables.postSuppliers.sites.items[0].IncomeTaxReportingSiteFlag }}"
+          label-hint="IncomeTaxReportingSiteFlag" style="background-color: lightgreen;"></oj-input-text>

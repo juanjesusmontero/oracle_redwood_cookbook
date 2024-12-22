@@ -1,0 +1,39 @@
+{
+    "Supplier": "KPMG AB52335",
+    "SupplierNumber": "100772-52335",
+    "TaxOrganizationTypeCode": "CORPORATION",
+    "SupplierTypeCode": "SUPPLIER",
+    "BusinessRelationshipCode": "SPEND_AUTHORIZED",
+    "TaxRegistrationCountryCode": "SE",
+    "addresses": {
+        "items": [
+            {
+                "AddressName": "Stockholm-TCC-SE",
+                "CountryCode": "SE",
+                "AddressLine1": "Vasagatan 16",
+                "AddressPurposeOrderingFlag": "Y",
+                "AddressLine2": "101 27",
+                "AddressLine3": null,
+                "AddressLine4": null,
+                "City": "Stockholm",
+                "State": null,
+                "PostalCode": "101 27"
+            }
+        ]
+    },
+    "sites": {
+        "items": [
+            {
+                "SupplierSite": "SE06-SEK-PURCH",
+                "ProcurementBU": "Australia Business Unit",
+                "SupplierAddressName": "Stockholm-TCC-SE",
+                "SitePurposeSourcingOnlyFlag": "N",
+                "SitePurposePurchasingFlag": "Y",
+                "SitePurposeProcurementCardFlag": "N",
+                "SitePurposePrimaryPayFlag": null,
+                "IncomeTaxReportingSiteFlag": false
+            }
+        ]
+    }
+}
+

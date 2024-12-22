@@ -1,0 +1,11 @@
+,
+    "JobsFilter": {
+      "type": "oj-sp/smart-search/default-filters/SelectMultipleFilter",
+      "label": "Countries",
+      "options": {
+        "field": "country",
+        "optionsData": "[[ $search.filters. JobsFilter.options.optionsData ]]",
+        "optionsKeys": "[[ $search.filters. JobsFilter.options.optionsKeys ]]"
+      },
+      "data": {}
+    }

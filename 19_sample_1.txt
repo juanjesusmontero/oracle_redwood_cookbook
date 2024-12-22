@@ -1,0 +1,1 @@
+oraext:encodeReferenceToBase64 (/nssrcmpr:execute/nssrcmpr:attachments/ns24:attachment/ns24:attachmentReference )

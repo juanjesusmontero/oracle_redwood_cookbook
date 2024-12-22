@@ -1,0 +1,37 @@
+define([], () => {
+  'use strict';
+
+  class PageModule {
+
+    /**
+     *
+     * @param {String} arg1
+     * @return {String}
+     */
+    completeStep(steps, currentstep) {
+      steps.filter(x => x.id === currentstep)[0].status = "success";
+      return steps;
+    }
+
+  }
+
+  PageModule.prototype.today = function () {
+    return new Date();
+  };
+
+  PageModule.prototype.currentDate = function () {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    //today = dd + '/' + mm + '/' + yyyy;
+    //2022-01-19T13:13:04.000+00:00
+    today = yyyy + '-' + mm + '-' + dd  ;//+ 'T00:00:00.000+00:00';
+    return today;
+  };
+
+
+  return PageModule;
+  
+});

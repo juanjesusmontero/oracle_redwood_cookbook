@@ -1,0 +1,87 @@
+{
+	"description": "Navigates to the flow selected in the navigation tab.",
+	"variables": {
+		"item": {
+			"required": true,
+			"type": "string",
+			"input": "fromCaller"
+		},
+		"updatedFrom": {
+			"type": "string",
+			"input": "fromCaller"
+		}
+	},
+	"root": "switch1",
+	"actions": {
+		"switch1": {
+			"module": "vb/action/builtin/switchAction",
+			"outcomes": {
+				"search": "navigateToSearchSearchStart",
+				"welcome": "navigateToWelcomeWelcomeStart",
+				"dashboard": "navigateToDashboardDashboardStart",
+				"guidedprocess": "navigateToGuidedprocessGuidedprocessStart",
+				"demoprocess": "navigateToDemoprocessStart"
+			},
+			"parameters": {
+				"caseValue": "{{ $chain.variables.item }}",
+				"possibleValues": [
+					"search",
+					"welcome",
+					"dashboard",
+					"guidedprocess",
+					"demoprocess"
+				]
+			}
+		},
+		"navigateToWelcomeWelcomeStart": {
+			"module": "vb/action/builtin/navigateAction",
+			"@dt": {
+				"targetType": "flow"
+			},
+			"parameters": {
+				"flow": "welcome",
+				"page": "welcome-start"
+			}
+		},
+		"navigateToSearchSearchStart": {
+			"module": "vb/action/builtin/navigateAction",
+			"@dt": {
+				"targetType": "flow"
+			},
+			"parameters": {
+				"flow": "search",
+				"page": "search-start"
+			}
+		},
+		"navigateToDashboardDashboardStart": {
+			"module": "vb/action/builtin/navigateAction",
+			"@dt": {
+				"targetType": "flow"
+			},
+			"parameters": {
+				"flow": "dashboard",
+				"page": "dashboard-start"
+			}
+		},
+		"navigateToGuidedprocessGuidedprocessStart": {
+			"module": "vb/action/builtin/navigateAction",
+			"@dt": {
+				"targetType": "flow"
+			},
+			"parameters": {
+				"flow": "guidedprocess",
+				"page": "guidedprocess-start"
+			}
+		},
+		"navigateToDemoprocessStart": {
+			"module": "vb/action/builtin/navigateAction",
+			"@dt": {
+				"targetType": "flow"
+			},
+			"parameters": {
+				"flow": "demoprocess",
+				"page": "demoprocess-start"
+			}
+		}
+	}
+}

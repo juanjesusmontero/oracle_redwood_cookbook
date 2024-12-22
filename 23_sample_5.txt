@@ -1,0 +1,53 @@
+define([
+  'vb/action/actionChain',
+  'vb/action/actions',
+  'vb/action/actionUtils',
+], (
+  ActionChain,
+  Actions,
+  ActionUtils
+) => {
+  'use strict';
+
+  class SimpleCreateAndEditPageTemplateSpSAC extends ActionChain {
+
+    /**
+     * @param {Object} context
+     * @param {Object} params
+     * @param {string} params.actionId 
+     */
+    async run(context, { actionId }) {
+      const { $page, $flow, $application, $constants, $variables } = context;
+
+      if (actionId === 'Load') {
+
+        await Actions.fireNotificationEvent(context, {
+          summary: 'Info.',
+          message: 'Loading default for address',
+          displayMode: 'transient',
+          type: 'info',
+        });
+
+        $variables.postSuppliers.addresses.items[0].AddressLine1 = "Demo Redwood Street 1";
+        $variables.postSuppliers.addresses.items[0].AddressLine2 = "AddressLine2";
+        $variables.postSuppliers.addresses.items[0].AddressPurposeOrderingFlag = "Y";
+        $variables.postSuppliers.addresses.items[0].PostalCode = "10127";
+        $variables.postSuppliers.addresses.items[0].CountryCode = "SE";
+        $variables.postSuppliers.addresses.items[0].City = "Stockholm";
+        $variables.postSuppliers.addresses.items[0].AddressName = "AddressName144";
+
+        $variables.postSuppliers.sites.items[0].SupplierAddressName = "AddressName144";
+        $variables.postSuppliers.sites.items[0].SupplierSite = "SE06-SEK";
+        $variables.postSuppliers.sites.items[0].ProcurementBU = "Australia Business Unit";
+        $variables.postSuppliers.sites.items[0].SitePurposeSourcingOnlyFlag = "N";
+        $variables.postSuppliers.sites.items[0].SitePurposePurchasingFlag = "Y";
+        $variables.postSuppliers.sites.items[0].SitePurposeProcurementCardFlag = "N";
+        $variables.postSuppliers.sites.items[0].SitePurposePrimaryPayFlag = null;
+        $variables.postSuppliers.sites.items[0].IncomeTaxReportingSiteFlag = null;
+
+      }
+    }
+  }
+
+  return SimpleCreateAndEditPageTemplateSpSAC;
+});

@@ -1,0 +1,18 @@
+{
+    "SupplierId": 300000294334142,
+    "SupplierPartyId": 300000294334143,
+    "Supplier": "KPMG AB52335",
+    "SupplierNumber": "100772-52335",
+    "AlternateName": null,
+    "TaxOrganizationTypeCode": "CORPORATION",
+    "TaxOrganizationType": "Corporation",
+    "SupplierTypeCode": "SUPPLIER",
+    "SupplierType": "Supplier",
+    "InactiveDate": null,
+    "Status": "ACTIVE",
+    "BusinessRelationshipCode": "SPEND_AUTHORIZED",
+…
+
+As this payload is huge, you could download it from here:
+
+https://docs.oracle.com/en/cloud/saas/procurement/24d/fapra/op-suppliers-post.html

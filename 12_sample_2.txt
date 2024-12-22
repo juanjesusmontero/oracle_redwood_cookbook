@@ -1,0 +1,15 @@
+      <oj-defer slot="KPI_1_id" >
+        <oj-sp-dashboard-grid layout="hero-plus">
+          <oj-sp-dashboard-panel panel-title="Panel Title 1" slot="">
+            <oj-chart type="pie" style-defaults.pie-inner-radius="0.9" pie-center.label="Center Label"
+              class="oj-sm-flex-initial" 
+data="[[$variables.employeesListSDP2]]" legend.title="departmentId">
+              <template slot="itemTemplate">
+                <oj-chart-item value="[[ $current.data.salary ]]" 
+series-id="[[ $current.data.departmentId ]]"
+                  group-id="[[['Undefined']]]"></oj-chart-item>
+              </template>
+            </oj-chart>
+          </oj-sp-dashboard-panel>
+        </oj-sp-dashboard-grid>
+      </oj-defer>

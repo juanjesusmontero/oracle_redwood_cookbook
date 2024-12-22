@@ -1,0 +1,41 @@
+import oracle.adf.model.connection.rest.exception.RestConnectionException
+import oracle.jbo.ValidationException
+
+// Instantiate REST service for site creation by providing the name of
+// the service that we created in an earlier step
+
+def xService = newService("sn_test_new_oic_conn")
+
+println("step 1")
+
+def xx = '"'+departmentName+'"'
+def yy = " : "
+
+// Specify the body of the API request 
+ def xPayload = '{ "pName" ' + yy + xx +' }'
+// def xPayload = '{ "pName" : "test_01" }'
+
+println("step 2")
+
+// Make a POST request to the Service
+
+xService.requestHTTPHeaders['Content-Type'] = ['application/json']
+def xResponse 
+
+try{
+    xResponse = xService.postXX_DEMO_GROOVY_VB1_0(xPayload)
+} catch (Exception ex) {
+
+    log.error "getMsg: " + ex.getMessage(); 
+    println("step 2.1"+" getMsg: " + ex.getMessage())
+    
+}
+
+println("step 3")
+
+println(xResponse)
+
+// Get the status code of the response and test if all is well
+def xStatusCode=xService.getHTTPStatusCode()
+
+println("step 4:"+xStatusCode)

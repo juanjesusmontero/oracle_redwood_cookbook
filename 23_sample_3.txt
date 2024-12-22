@@ -1,0 +1,17 @@
+{
+    "BusinessRelationshipCode": "SPEND_AUTHORIZED",
+    "Supplier": "REDWOOD_DEMO_001",
+    "TaxRegistrationCountryCode": "SE",
+    "TaxOrganizationTypeCode": "CORPORATION",
+    "SupplierTypeCode": "SUPPLIER",
+    "addresses": {
+        "items": [
+            {}
+        ]
+    },
+    "sites": {
+        "items": [
+            {}
+        ]
+    }
+}

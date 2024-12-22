@@ -1,0 +1,31 @@
+,
+    ,
+    "kpisADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "data": "{{ $page.variables.kpisArray }}",
+        "itemType": "object",
+        "keyAttributes": "id"
+      }
+    },
+    "kpisArray": {
+      "type": "object[]",
+      "defaultValue": [
+        {
+          "id": "KPI_1_id",
+          "title": "Total Salary Departments",
+          "metric": "Total Salary Departments",
+          "meta": "Metadata 1"
+        },
+        {
+          "id": "KPI_2_id",
+          "title": "Top 5 Employees",
+          "metric": "Top 5 Employees",
+          "meta": "Metadata 2"        }
+      ]
+    },
+    "selectedKpi": {
+      "type": "string",
+      "defaultValue": "KPI_1_id"
+    }
+  },

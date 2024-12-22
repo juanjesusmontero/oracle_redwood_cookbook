@@ -1,0 +1,26 @@
+{
+	"$search": {
+		"filters": {
+			"DepartmentsFilter": {
+				"label": "Departments",
+				"options": {
+					"optionsData": "[[ $page.variables.departmentListSDP ]]",
+					"optionsKeys": {
+						"label": "departmentName",
+						"value": "id"
+					}
+				}
+			},
+			"JobsFilter": {
+				"label": "Jobs",
+				"options": {
+					"optionsData": "[[ $page.variables.jobListSDP ]]",
+					"optionsKeys": {
+						"label": "jobTitle",
+						"value": "id"
+					}
+				}
+			}
+		}
+	}
+}

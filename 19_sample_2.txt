@@ -1,0 +1,22 @@
+/*
+  Copyright (c) 2018, Oracle and/or its affiliates.
+  The Universal Permissive License (UPL), Version 1.0
+*/
+define([], function() {
+  'use strict';
+
+  var PageModule = function PageModule() {};
+
+  PageModule.prototype.download = function(fileName, specFileContent) {
+          
+// 
+//console.log(specFileContent)
+var a = document.createElement("a"); 
+a.href = specFileContent;
+a.download = fileName;
+a.click(); //Downloaded file          
+
+          };  
+
+  return PageModule;
+});

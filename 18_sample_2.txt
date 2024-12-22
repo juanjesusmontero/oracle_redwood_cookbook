@@ -1,0 +1,27 @@
+define([
+  'vb/action/actionChain',
+  'vb/action/actions',
+  'vb/action/actionUtils',
+], (
+  ActionChain,
+  Actions,
+  ActionUtils
+) => {
+  'use strict';
+
+  class show2 extends ActionChain {
+
+    /**
+     * @param {Object} context
+     */
+    async run(context) {
+      const { $page, $flow, $application } = context;
+
+      $page.variables.columns = $page.variables.columnOptions;
+
+      $page.variables.menuValue = $page.variables.columnOptions.map(op=>op.field);
+    }
+  }
+
+  return show2;
+});
