@@ -1,0 +1,50 @@
+-----------------------------------
+Quick Install Steps for chapter 21.
+-----------------------------------
+
+REPLACE WITH THE DATA OF YOUR INSTANCES AND CREDENTIALS.
+
+------------------------
+1) Get SaaS credentials.
+------------------------
+
+POD			: https://fa-petits-saasfademo1.ds-fa.oraclepdemos.com
+User SaaS	: fin_impl
+Password	: zzz
+
+------------------
+2) Visual Builder.
+------------------
+Import the VB. application provided in doc. with this name (important as below connections will use it!): YY_GUIDED_PROC_AP_INV
+
+Connections:
+	
+	Review: Connections-Backend tab-Integration Applications-Servers-Override Backend-Edit button-Authentication-Select "Delegate authentication".
+	Important: make sure Menu (on the right)-Settings-Business Objects tab-Enable "Enable basic authentication for business object REST APIs".
+	TBD: the business object used (PartnerAP_File) needs activated in Security tab->"Role-based security is enabled for this object".
+	
+Stage and publish the integration.
+
+----------------------
+3) Oracle Integration.
+----------------------
+
+Import integration.
+
+Connections:
+
+	XX_DEMO_ERP			: use above SaaS data to setup.
+	XX_REST_BOTS_GEN3	: https://oic3-partners-botas-yu.integration.ca-montreal-1.ocp.oraclecloud.com
+	XX_VB_BOTS_GEN3		: 	
+							
+		After publishing you get this URL.
+		https://oic-vbcs-oic3-partners-vb-botas.builder.ca-montreal-1.ocp.oraclecloud.com/ic/builder/rt/YY_GUIDED_PROC_AP_INV/live/resources/data/PartnerAP_File
+		
+		But in connection you have to use this:
+		https://oic-vbcs-oic3-partners-vb-botas.builder.ca-montreal-1.ocp.oraclecloud.com/ic/builder/rt/YY_GUIDED_PROC_AP_INV/live/resources
+		
+Activate integration.
+
+Test VB using Published stage.	
+
+	
