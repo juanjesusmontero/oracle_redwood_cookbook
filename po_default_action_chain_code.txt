@@ -1,0 +1,90 @@
+define([
+  'vb/action/actionChain',
+  'vb/action/actions',
+  'vb/action/actionUtils',
+], (
+  ActionChain,
+  Actions,
+  ActionUtils
+) => {
+  'use strict';
+
+  class demoUpdateDefaults extends ActionChain {
+
+    /**
+     * @param {Object} context
+     */
+    async run(context) {
+      const { $page, $flow, $application, $base, $extension, $constants, $variables, $functions } = context;
+
+      // GET PO_ID FROM URL USING JAVASCRIPT
+      const varPoHeaderId = await $functions.getPoHeaderId();
+
+      // GET PO-DRAFT  DATA
+      const response = await Actions.callRest(context, {
+        endpoint: 'site_prc_extension:draft_pos/get_draftPurchaseOrders-DFF',
+        uriParams: {
+          'draftPurchaseOrders_DFF_Id': varPoHeaderId,
+          'draftPurchaseOrders_Id': varPoHeaderId,
+        },
+        responseBodyFormat: 'json',
+        responseType: 'get_draftPurchaseOrders_DFF_type',
+      });
+
+      // IF FLAG NO SET WE WILL UPDATE WITH DEFAULTS
+      if (response.body.demojj !== 'UPDATED-BY-EXTENSION') {
+
+        const responsePO = await Actions.callRest(context, {
+          endpoint: 'site_prc_extension:draft_pos/get_draftPurchaseOrders',
+          responseBodyFormat: 'json',
+          uriParams: {
+            'draftPurchaseOrders_Id': varPoHeaderId,
+          },
+        });
+
+        // DEPENDING ON THE SUPPLIER WE SET DEFAULT DATA
+        switch (responsePO.body.Supplier) {
+          case 'Building Management':
+            $variables.var_update_draftPurchaseOrders.Description = 'BM. From extension 007';
+            break;
+          case 'Amazon':
+            $variables.var_update_draftPurchaseOrders.Description = 'AMZ. From extension 007';
+            break;
+          default:
+            $variables.var_update_draftPurchaseOrders.Description = 'OTHERS. From extension 007';
+            break;
+        }
+
+        const response2 = await Actions.callRest(context, {
+          endpoint: 'site_prc_extension:draft_pos/update_draftPurchaseOrders',
+          body: $variables.var_update_draftPurchaseOrders,
+          uriParams: {
+            'draftPurchaseOrders_Id': varPoHeaderId,
+          },
+          responseBodyFormat: 'json',
+        });
+
+        $variables.varDraftPoDFF.demojj = 'UPDATED-BY-EXTENSION';
+
+        const response3 = await Actions.callRest(context, {
+          endpoint: 'site_prc_extension:draft_pos/update_draftPurchaseOrders-DFF',
+          uriParams: {
+            'draftPurchaseOrders_DFF_Id': varPoHeaderId,
+            'draftPurchaseOrders_Id': varPoHeaderId,
+          },
+          body: $variables.varDraftPoDFF,
+          responseBodyFormat: 'json',
+        });
+
+        /*
+         * OPTIONAL: IN MY INSTANCE FIRST UPADATE IS NOT REFRESHED IN PAGE.
+         * IT IS DONE, BUT IT IS NOT REFRESHED.
+         */
+        await $functions.reload_page();
+      }
+
+    }
+  }
+
+  return demoUpdateDefaults;
+});

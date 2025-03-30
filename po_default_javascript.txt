@@ -1,0 +1,27 @@
+define([], () => {
+  'use strict';
+
+  class PageModule {
+  }
+
+  PageModule.prototype.default_js = function () {
+    alert('Hi from VB_REDWOOD_COOKBOOK_2025-1');
+  };
+
+  PageModule.prototype.getPoHeaderId = function () {
+
+    
+    let a = location.href;
+    let b = a.indexOf("poHeaderId");
+    let d = a.substring(b + 11);
+    
+    //alert('Hi from VB_REDWOOD_COOKBOOK_2025-2. po_id:' + d);    
+
+    return d;
+    
+  };
+
+  return PageModule;
+
+});
+
